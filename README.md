@@ -63,7 +63,7 @@
 ```
    sysmon -accepteula -i sysmonconfig.xml
 ```
-5.**Create or download a configuration file:**
+ 5.**Create or download a configuration file:**
 
 - The configuration file defines which events Sysmon will monitor.
    
@@ -71,7 +71,7 @@
 
   - Save the sysmonconfig.xml file to the same folder where you extracted Sysmon.
    
-6.**Verify Sysmon Installation and Operation**
+ 6.**Verify Sysmon Installation and Operation**
  - To check if Sysmon is running correctly, use this command:
 
   ```
@@ -83,7 +83,7 @@
 
     - Open Event Viewer by searching for it in the Start menu, and navigate to Applications and Services Logs > Microsoft > Windows > Sysmon/Operational.
 
-   7.**Configuration Sysmon**
+  7.**Configuration Sysmon**
    
  - Create or download configurations files:
 
@@ -98,7 +98,7 @@
      - Copy to file sysmonconfig-research.xml To the Notepad++
       
      -  Save the file type of  xml file name Olaf_harton_config.xml
-  - Install Sysmon with the config file
+   8.**Install Sysmon with the config file**
     
       - Run the command via CMD as Administrator
    
@@ -116,7 +116,7 @@
 
     -   Go to Splunk’s official website:Splunk Downloads page for Universal Forwarder.
     
-    7.**Install Splunk Universal Forwarder**
+    2.**Install Splunk Universal Forwarder**
      -  After downloading, double-click the .msi file to start the installation
    
      -  Follow the installation steps:
