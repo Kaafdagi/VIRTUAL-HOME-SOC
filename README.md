@@ -254,7 +254,7 @@ You can run searches using the **Search tab** to view the raw logs that Splunk h
 
 Leverage Splunk’s **Data Model** to create compelling reports and dashboards based on your XDR data. T
 
-###Step 5: Investigating Alerts
+### Step 5: Investigating Alerts
 
 When viewing XDR data on the **Splunk dashboard**, you can view details such as:
 - **Severity Score**: How critical the event is.
