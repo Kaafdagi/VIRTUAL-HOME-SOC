@@ -385,7 +385,6 @@ To verify that Splunk is working correctly:
 
 You've successfully installed and set up **Splunk Enterprise** on **Pardus (Linux)**. You can now start configuring Splunk to collect, index, and visualize your logs.
 
-For more detailed configuration and usage tutorials, you can refer to the [official Splunk documentation](https://docs.splunk.com/Documentation/Splunk).
 
 ---
 
