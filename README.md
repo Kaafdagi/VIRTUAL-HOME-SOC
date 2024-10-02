@@ -1,4 +1,4 @@
-# HOME SOC Setup With Windows,Linux(Pardus) Splunk Enterprice ,Forvarder,Trend Micro
+# HOME SOC Setup With Windows-Linux(Pardus) -Splunk Enterprice -Universal Forwarder-Trend Micro
 
  "This project demonstrates the setup of a home Security Operations Center (SOC) using virtual machines running Windows 10, Pardus, and Kali Linux. The aim is to integrate security tools such as Sysmon, Splunk Forwarder, Splunk Enterprise, and Trend Micro Agent for real-time security monitoring and threat detection."
  
@@ -13,7 +13,7 @@
 
 - System Requirements: Specify the minimum system requirements for running these virtual machines, such as 4 GB of RAM and 50 GB of disk space.
 
-## Windows 10 Virtual Machine Installation 
+## Windows 10 Server Virtual Machine Installation 
 
 1.**Create a new Virtual Machine (VM):**
 - Open VirtualBox and click on “New” to create a virtual machine. 
@@ -46,7 +46,7 @@
 
  - Select the unallocated space and click "Next" to install.
 
-   ## Installing Sysmon and  Configuration on Windows
+   ## Installing Sysmon and  Configuration on Windows Server
    
  1.**Download Sysmon:**
 
@@ -111,7 +111,7 @@
    
          - To see log on Splunk run whoami command
         
-      ## Splunk Forwarder On Windows
+      ## Splunk Forwarder On Windows Server
     1.**Download Splunk Universal Forwarder**
 
     -   Go to Splunk’s official website:Splunk Downloads page for Universal Forwarder.
@@ -184,9 +184,214 @@
 
 4. **Complete Installation:**
    - Once the installation is complete, click **"Finish"** to exit the wizard.
-        
+   - Configure and Enable the agent from Trend Micro Agent consol
 
+## Trend Micro Vision One Integration with Splunk XDR
 
+## Prerequisites
+
+Before you begin, ensure you have:
+- A running instance of **Splunk Enterprise**.
+- Access to **Trend Micro Vision One** with administrative rights.
+- The necessary credentials for both Splunk and Trend Micro.
+
+---
+
+### Step 1: Install Trend Micro Vision One for Splunk XDR
+
+1. Navigate to the **Splunkbase Marketplace**.
+2. Search for the app by entering "Trend Micro Vision One" in the search bar.
+3. Find the **Trend Micro Vision One for Splunk XDR** integration and click **Install**.
+4. Enter your **Splunk.com** username and password when prompted.
+5. Agree to the terms and proceed with the installation.
+
+### Restarting Splunk
+Once the installation is complete, restart your Splunk instance to apply the changes:
+- Go to **Settings > Server Controls** and select **Restart Splunk**.
+
+After the restart, the app should be available in your Splunk dashboard.
+
+---
+
+### Step 2: Configure the Integration
+
+### Obtaining Credentials from Trend Micro Vision One
+
+1. Log in to your **Trend Micro Vision One Console**.
+2. Navigate to **Administration > Third-Party Integration**.
+3. Select **Trend Micro Vision One for Splunk XDR** and click on the **Copy** icons to obtain the **Endpoint URL** and **Authentication Token**.
+
+### Configuring the App in Splunk
+
+1. Go back to the **Splunk console**.
+2. Open the **Trend Micro Vision One for Splunk XDR** app.
+3. Paste the **Endpoint URL** and **Authentication Token** you copied from the Trend Micro console.
+4. If your environment requires a proxy, configure the custom proxy settings.
+5. Click **Save**.
+
+You should see a confirmation message, indicating that the application settings have been updated and the connection to Trend Micro Vision One is successful.
+
+---
+
+### Step 3: Start Pulling XDR Data
+
+After configuring the app, **Splunk will begin pulling new XDR data** from Trend Micro Vision One. Please note that **pre-existing XDR data will not be pulled** into Splunk. Allow some time for new data to appear.
+
+### Modifying Data Input Settings
+
+You can adjust various settings for data inputs:
+- **Polling Interval**: Define how often Splunk pulls data from Trend Micro.
+- **Index**: Choose where the XDR data will be indexed within Splunk.
+- **Risk Level**: Set the minimum risk level for data collection. For example, setting it to "Low" ensures all events, regardless of risk, are pulled.
+
+---
+
+### Step 4: Analyzing Data in Splunk
+
+You can run searches using the **Search tab** to view the raw logs that Splunk has collected. Additionally, the app supports the **Splunk Common Information Model (CIM)**, which allows you to normalize the data at search time.
+
+### Creating Reports and Dashboards
+
+Leverage Splunk’s **Data Model** to create compelling reports and dashboards based on your XDR data. T
+
+###Step 5: Investigating Alerts
+
+When viewing XDR data on the **Splunk dashboard**, you can view details such as:
+- **Severity Score**: How critical the event is.
+- **Model Name**: The security model or tool that flagged the event.
+
+Click on any alert to be redirected to the **Trend Micro Vision One Workbench**, where you can initiate an investigation immediately.
+
+---
+
+### Conclusion
+
+Integrating **Trend Micro Vision One** with **Splunk XDR** provides a powerful way to manage and investigate security incidents. 
+
+### Additional Notes
+- **Pre-existing Data**: The app does not pull historical XDR data, only new events.
+- **Custom Dashboards**: After integrating, consider setting up custom dashboards for better visualization of critical events.
+- **Proxy Configurations**: Ensure proxy settings are correctly configured if your environment requires it.
+
+# Installing Splunk on Pardus (Linux)
+
+In this guide, we'll walk through installing **Splunk Enterprise** on **Pardus**, a Linux distribution similar to Kali. This tutorial can also be applied to other Linux flavors such as **Ubuntu**.
+
+---
+
+## Prerequisites
+
+Before we begin, ensure you have:
+- **Pardus** or any other Linux flavor installed.
+- Sufficient system resources (at least 2GB RAM recommended for testing purposes).
+- An account on [Splunk.com](https://www.splunk.com) to download Splunk.
+
+---
+
+## Step 1: Download Splunk
+
+1. Go to [Splunk.com](https://www.splunk.com) and log in or create an account.
+2. Navigate to the **Downloads** section.
+3. Download the **Linux** version of Splunk Enterprise (you'll get a 90-day free trial for testing purposes).
+4. After the download, you should have a `.deb` package for Debian-based distributions like Pardus.
+
+---
+
+## Step 2: Install Splunk
+
+Once the package is downloaded, follow these steps to install it:
+
+1. **Open a terminal** and navigate to your **Downloads** directory:
+    ```bash
+    cd ~/Downloads
+    ```
+2. **List the files** to ensure the Splunk package is there:
+    ```bash
+    ls -l
+    ```
+    You should see the downloaded `.deb` file.
+
+3. **Install Splunk** using `dpkg` (Debian Package Manager):
+    ```bash
+    sudo dpkg -i splunk_package_name.deb
+    ```
+   Replace `splunk_package_name.deb` with the actual filename of your downloaded package.
+
+4. **Wait for the installation** to complete. It may take a few moments.
+
+---
+
+## Step 3: Start and Configure Splunk
+
+Now that Splunk is installed, let's start the service and configure it:
+
+1. **Navigate to the Splunk bin directory**:
+    ```bash
+    cd /opt/splunk/bin
+    ```
+2. **Start Splunk**:
+    ```bash
+    sudo ./splunk start
+    ```
+
+3. **Agree to the license** by pressing `Enter` to scroll through the terms, and type `yes` when prompted to accept.
+
+4. **Set up admin credentials**:
+    - **Username**: Choose a username (default is `admin`).
+    - **Password**: Set a secure password.
+
+---
+
+## Step 4: Accessing Splunk Web Interface
+
+Once Splunk starts, it will be available on **port 8000** of your local machine. To access it:
+
+1. **Open your web browser**.
+2. Navigate to:
+    ```bash
+    http://localhost:8000
+    ```
+3. **Log in** with the username and password you set earlier.
+
+---
+
+## Step 5: Enable SSL for Secure Communication (Optional)
+
+By default, Splunk doesn’t use SSL for its web interface. Here's how you can enable SSL:
+
+1. **Go to Settings** > **Server Settings** > **General Settings** in the Splunk web interface.
+2. Enable **SSL** and save your changes.
+3. **Restart Splunk** to apply the changes:
+    ```bash
+    sudo ./splunk restart
+    ```
+4. After the restart, access the web interface using:
+    ```bash
+    https://localhost:8000
+    ```
+5. You’ll receive a **self-signed certificate warning**. This is normal for local environments. Proceed by accepting the risk.
+
+---
+
+## Step 6: Verify Installation
+
+To verify that Splunk is working correctly:
+1. Go to the **Search** tab in the web interface.
+2. Perform a basic search to ensure Splunk is collecting data.
+
+---
+
+## Conclusion
+
+You've successfully installed and set up **Splunk Enterprise** on **Pardus (Linux)**. You can now start configuring Splunk to collect, index, and visualize your logs.
+
+For more detailed configuration and usage tutorials, you can refer to the [official Splunk documentation](https://docs.splunk.com/Documentation/Splunk).
+
+---
+
+**Note**: The installation process for other Linux distributions like **Ubuntu**, **Debian**, and **Kali Linux** is nearly identical. Simply follow the steps outlined above.
+
+Happy Splunking!
 
       
         
