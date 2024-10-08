@@ -1,4 +1,4 @@
-# HOME SOC Setup With Windows-Linux(Pardus) -Splunk Enterprice -Universal Forwarder-Trend Micro
+# HOME SOC Setup With Windows-Linux(Debian) -Splunk Enterprice -Universal Forwarder-Trend Micro
 
  "This project demonstrates the setup of a home Security Operations Center (SOC) using virtual machines running Windows 10, Pardus, and Kali Linux. The aim is to integrate security tools such as Sysmon, Splunk Forwarder, Splunk Enterprise, and Trend Micro Agent for real-time security monitoring and threat detection."
  
