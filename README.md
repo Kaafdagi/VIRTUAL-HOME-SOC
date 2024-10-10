@@ -9,7 +9,7 @@
 
 - Splunk Forwarder: Collects log data from Windows 10 and sends it to Splunk Enterprise for analysis.
 
-- Pardus: Hosts Splunk Enterprise to centralize log collection and analysis.
+- Linux: Hosts Splunk Enterprise to centralize log collection and analysis.
 
 - System Requirements: Specify the minimum system requirements for running these virtual machines, such as 4 GB of RAM and 50 GB of disk space.
 
