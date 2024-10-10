@@ -273,7 +273,7 @@ Integrating **Trend Micro Vision One** with **Splunk XDR** provides a powerful w
 - **Custom Dashboards**: After integrating, consider setting up custom dashboards for better visualization of critical events.
 - **Proxy Configurations**: Ensure proxy settings are correctly configured if your environment requires it.
 
-# Installing Splunk on Pardus (Linux)
+# Installing Splunk on Linux
 
 In this guide, we'll walk through installing **Splunk Enterprise** on **Pardus**, a Linux distribution similar to Kali. This tutorial can also be applied to other Linux flavors such as **Ubuntu**.
 
@@ -383,7 +383,7 @@ To verify that Splunk is working correctly:
 
 ## Conclusion
 
-You've successfully installed and set up **Splunk Enterprise** on **Pardus (Linux)**. You can now start configuring Splunk to collect, index, and visualize your logs.
+You've successfully installed and set up **Splunk Enterprise** on **Linux**. You can now start configuring Splunk to collect, index, and visualize your logs.
 
 
 ---
